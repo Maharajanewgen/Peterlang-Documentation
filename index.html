@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Animated Side Navigation Bar</title>
+    <title>PeterLang Documentation</title>
 </head>
 <body>
 
@@ -13,6 +13,7 @@
     <a href="#" onclick="showContent('Firstproof Jobstudy')">Firstproof Jobstudy</a>
     <a href="#" onclick="showContent('Updates')">Updates</a>
     <a href="#" onclick="showContent('Front Matter')">Front Matter</a>
+    <a href="#" onclick="showContent('search-container')">Search</a>
 </nav>
 
 <!-- Your page content goes here -->
@@ -95,7 +96,11 @@ Oxford - Berlin - Bruxelles - Chennai - Lausanne - New York</p>
      <p class="right-align">Date: Legacy</p>
 </div>
 
-
+ <div class="search-container" id="search-container">
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" placeholder="Enter your search term">
+        <button type="button" onclick="performSearch()">Search</button>
+    </div>
 
 <script src="script.js"></script>
 </body>
