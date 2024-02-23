@@ -14,7 +14,7 @@ function showContent(contentId) {
 }
  function performSearch() {
             // Add your search functionality here
-            var searchTerm = document.getElementById('search').value;
+            var searchTerm = document.getElementById('search-container).value;
             console.log('Performing search for: ' + searchTerm);
             // You can implement your search logic or call an API here
         }
