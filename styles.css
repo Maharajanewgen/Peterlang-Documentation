@@ -11,7 +11,7 @@
 
 .side-nav a {
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 14px 16px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
