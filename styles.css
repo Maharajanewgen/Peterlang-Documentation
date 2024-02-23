@@ -1,10 +1,14 @@
+/* CSS for the container holding side-nav and content */
+.container {
+    display: flex;
+}
+
 /* CSS for the side navigation bar */
 .side-nav {
     background-color: #333;
     overflow: hidden;
     width: 200px;
     height: 100vh;
-    position: fixed;
     display: flex;
     flex-direction: column;
 }
@@ -22,6 +26,24 @@
     background-color: #ddd;
     color: black;
 }
+
+/* CSS for the content sections */
+.content-container {
+    padding-left: 220px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content {
+    padding: 20px;
+    display: none;
+    word-wrap: break-word;
+}
+
+.content.active {
+    display: block;
+}
+
 /* CSS for the list */
 ul {
     list-style-type: none;
@@ -36,10 +58,10 @@ li {
     transition: background-color 0.9s ease;
     cursor: pointer;
 }
-ul ul
-{
-            margin-top: 5px; /* Add some space between parent and child lists */
-        }
+
+ul ul {
+    margin-top: 5px;
+}
 
 li:hover {
     background-color: #ccc;
@@ -48,28 +70,14 @@ li:hover {
 h1 {
     font-size: 24px;
     font-weight: bold;
-    /*color: #fff;*/ /* Text color */
-    background-color: #f0f0f0; /* Background color */
-    padding: 10px 20px; /* Padding around the text */
+    background-color: #f0f0f0;
+    padding: 10px 20px;
     margin-bottom: 10px;
-	width: 100%;
-    display: inline-block; /* Allows the background color to span the text width */
+    width: 100%;
+    display: inline-block;
 }
+
 .right-align {
     text-align: right;
-    width: 100%; /* Add a semicolon here */
+    width: 100%;
 }
-/* CSS for the content sections */
-.content {
-    padding: 20px;
-    margin-left: 220px;
-    width: calc(100% - 220px);
-    display: none;
-    /*overflow-x: hidden;*/ /* Prevent horizontal scroll */
-    word-wrap: break-word; /* Allow text to wrap */
-}
-
-.content.active {
-    display: block;
-}
-
