@@ -22,19 +22,6 @@
     background-color: #ddd;
     color: black;
 }
-
-/* CSS for the content sections */
-.content {
-    padding: 20px;
-    margin-left: 220px;
-    width: calc(100% - 220px); /* Adjusted width to accommodate the side-nav */
-    display: none; /* Initially hide all content sections */
-}
-
-.content.active {
-    display: block; /* Display only the active content section */
-}
-
 /* CSS for the list */
 ul {
     list-style-type: none;
@@ -72,6 +59,7 @@ h1 {
     text-align: right;
     width: 100%; /* Add a semicolon here */
 }
+/* CSS for the content sections */
 .content {
     padding: 20px;
     margin-left: 220px;
@@ -84,3 +72,4 @@ h1 {
 .content.active {
     display: block;
 }
+
