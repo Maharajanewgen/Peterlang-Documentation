@@ -68,6 +68,8 @@ h1 {
 	width: 100%
     display: inline-block; /* Allows the background color to span the text width */
 }
+<style>
 .right-align {
     text-align: right;
   }
+</style>
