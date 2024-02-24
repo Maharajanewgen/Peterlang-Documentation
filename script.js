@@ -12,4 +12,9 @@
             console.error("Content with ID " + contentId + " not found.");
         }
     }
-
+    document.addEventListener('DOMContentLoaded', function() {
+        var selectedContentId = localStorage.getItem('selectedContent');
+        if (selectedContentId) {
+            showContent(selectedContentId);
+        }
+    });
