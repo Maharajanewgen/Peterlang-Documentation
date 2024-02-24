@@ -8,6 +8,8 @@
         const selectedContent = document.getElementById(contentId);
         if (selectedContent) {
             selectedContent.classList.add('active');
+            // Save the selected content ID to local storage
+        localStorage.setItem('selectedContent', contentId);
         } else {
             console.error("Content with ID " + contentId + " not found.");
         }
