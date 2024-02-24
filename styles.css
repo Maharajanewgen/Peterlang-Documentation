@@ -57,7 +57,7 @@ h1 {
 }
 .right-align {
     text-align: right;
-    width: 95%;
+    width: 96%;
     background-color: #f0f0f0; /* Add your preferred background color here */
     /*padding: 10px;*/ /* Adjust the padding to your preference */
 }
@@ -73,4 +73,19 @@ h1 {
 
 .content.active {
     display: block;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
