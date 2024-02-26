@@ -81,9 +81,10 @@ table {
 }
 
 th, td {
-    border: 1px solid #dddddd;
+    border: 1px solid #d8d5d5;
     padding: 8px;
     text-align: left;
+    width: auto;
 }
 
 th {
