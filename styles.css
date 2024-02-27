@@ -57,8 +57,8 @@ h1 {
 }
 
 h2 {
-    font-size: 22px;
-    font-weight: italic;
+    font-size: 20px;
+    font-style: italic;
     /*color: #fff;*/ /* Text color */
     /*background-color: #f0f0f0;  Background color */
     padding: 10px 20px; /* Padding around the text */
