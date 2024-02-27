@@ -36,11 +36,10 @@ li {
     transition: background-color 0.9s ease;
     cursor: pointer;
 }
-ul ul
-{
-            margin-top: 5px; /* Add some space between parent and child lists */
-        }
 
+ul ul {
+    margin-top: 5px; /* Add some space between parent and child lists */
+}
 li:hover {
     background-color: #ccc;
 }
@@ -86,6 +85,7 @@ h2 {
 .content.active {
     display: block;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
