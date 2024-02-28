@@ -1,4 +1,4 @@
-function showContent(contentId) {
+/*function showContent(contentId) {
     const contents = document.querySelectorAll('.content');
 
     contents.forEach(content => {
@@ -13,6 +13,17 @@ function showContent(contentId) {
     } else {
         console.error("Content with ID " + contentId + " not found.");
     }
+}*/
+
+function showContent(section) {
+    // Fetch the content of the corresponding HTML file
+    fetch(section + '.html')
+        .then(response => response.text())
+        .then(content => {
+            // Display the content in a specific container (e.g., a div with id "content-container")
+            document.getElementById('content-container').innerHTML = content;
+        })
+        .catch(error => console.error('Error fetching content:', error));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
