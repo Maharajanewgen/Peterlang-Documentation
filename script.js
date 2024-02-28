@@ -1,44 +1,28 @@
-/*function showContent(contentId) {
-    const contents = document.querySelectorAll('.content');
+// script.js
 
-    contents.forEach(content => {
-        content.classList.remove('active');
-    });
+function showContent(contentId, className) {
+    var content = document.getElementById(contentId);
 
-    const selectedContent = document.getElementById(contentId);
-    if (selectedContent) {
-        selectedContent.classList.add('active');
-        // Save the selected content ID to local storage
-        localStorage.setItem('selectedContent', contentId);
+    if (content.style.display === 'none' || content.style.display === '') {
+        // If content is hidden, load it dynamically
+        fetchContent(contentId, className);
+        content.style.display = 'block';
     } else {
-        console.error("Content with ID " + contentId + " not found.");
+        content.style.display = 'none';
     }
-}*/
-function showContent(subfolder, container) {
-    console.log('subfolder:', subfolder);
-    console.log('container:', container);
-
-    // Fetch the content of the corresponding HTML file
-    fetch('html/' + subfolder + '/' + container + '.html')
-        .then(response => response.text())
-        .then(content => {
-            // Display the content in the specific container with the full ID
-            const contentContainer = document.getElementById(subfolder);
-            if (contentContainer) {
-                contentContainer.innerHTML = content;
-            } else {
-                console.error("Content container with ID " + subfolder + " not found.");
-            }
-        })
-        .catch(error => console.error('Error fetching content:', error));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const selectedContentId = localStorage.getItem('selectedContent');
-    if (!selectedContentId) {
-        console.error("No selected content ID found in local storage.");
-    } else {
-        showContent(selectedContentId);
-    }
-});
+function fetchContent(contentId, className) {
+    var container = document.getElementById('content-container');
+    var filePath = 'html/' + contentId + '/' + contentId + '.html';
 
+    // Fetch content using AJAX (Assuming no external libraries for simplicity)
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            container.innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open('GET', filePath, true);
+    xhr.send();
+}
