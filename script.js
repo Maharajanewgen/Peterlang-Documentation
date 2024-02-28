@@ -15,9 +15,9 @@
     }
 }*/
 
-function showContent(section) {
+function showContent(reanalysis, container) {
     // Fetch the content of the corresponding HTML file
-    fetch(section + '/reanalysis.html')
+    fetch('html/' + reanalysis + '/' + container + '.html')
         .then(response => response.text())
         .then(content => {
             // Display the content in a specific container (e.g., a div with id "content-container")
