@@ -23,8 +23,8 @@ function showContent(subfolder, container) {
     fetch('html/' + subfolder + '/' + container + '.html')
         .then(response => response.text())
         .then(content => {
-            // Display the content in a specific container (e.g., a div with id "content-container")
-            document.getElementById('content-container').innerHTML = content;
+            // Display the content in a specific container (e.g., a div with id "reanalysis")
+            document.getElementById(subfolder).innerHTML = content;
         })
         .catch(error => console.error('Error fetching content:', error));
 }
