@@ -33,11 +33,11 @@ function showContent(subfolder, container) {
         .catch(error => console.error('Error fetching content:', error));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const selectedContentId = localStorage.getItem('selectedContent');
     if (!selectedContentId) {
         console.error("No selected content ID found in local storage.");
     } else {
         showContent(selectedContentId);
     }
-});
+});*/
