@@ -14,7 +14,6 @@
         console.error("Content with ID " + contentId + " not found.");
     }
 }*/
-
 function showContent(subfolder, container) {
     console.log('subfolder:', subfolder);
     console.log('container:', container);
@@ -24,7 +23,12 @@ function showContent(subfolder, container) {
         .then(response => response.text())
         .then(content => {
             // Display the content in a specific container (e.g., a div with id "reanalysis")
-            document.getElementById(subfolder).innerHTML = content;
+            const contentContainer = document.getElementById(subfolder);
+            if (contentContainer) {
+                contentContainer.innerHTML = content;
+            } else {
+                console.error("Content container with ID " + subfolder + " not found.");
+            }
         })
         .catch(error => console.error('Error fetching content:', error));
 }
