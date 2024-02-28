@@ -16,6 +16,9 @@
 }*/
 
 function showContent(subfolder, container) {
+    console.log('subfolder:', subfolder);
+    console.log('container:', container);
+
     // Fetch the content of the corresponding HTML file
     fetch('html/' + subfolder + '/' + container + '.html')
         .then(response => response.text())
