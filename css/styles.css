@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    background-color: #3498db; /* Blue background color */
+    transition: 0.3s; /* Smooth transition effect */
+  }
+  
+  /* Sidebar content */
+  .sidebar a {
+    padding: 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s; /* Smooth transition effect on hover */
+  }
+  
+  /* Change background color on hover */
+  .sidebar a:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Main content area */
+  .content {
+    margin-left: 250px; /* Adjusted to match sidebar width */
+    padding: 16px;
+    transition: margin-left 0.3s; /* Smooth transition effect */
+  }
+  
+  /* Background color for the first content section */
+  .content1 {
+    background-color: #2ecc71; /* Green background color */
+  }
+  
+  /* Background color for the second content section */
+  .content2 {
+    background-color: #e74c3c; /* Red background color */
+  }
+  
