@@ -91,4 +91,18 @@ function updateStatus(issueNumber, newStatus) {
     }
   }
 
+  function updateValuesInSourceCode() {
+    const table = document.getElementById('issueTable');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+      const issueNumber = rows[i].getElementsByTagName('td')[0].textContent;
+      const dropdown = rows[i].getElementsByTagName('select')[0];
+      const updatedValue = dropdown ? dropdown.value : '';
+
+      // Update the source code or perform any other action with the updated value
+      console.log(`Update source code for issue ${issueNumber} with value: ${updatedValue}`);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', addDropdownsToTable);
