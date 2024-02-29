@@ -1,39 +1,53 @@
+/* Shared styles for the navbar across all pages */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: sans-serif;
 }
 
-.wrapper {
-    display: flex;
+nav #sidenav {
+    position: fixed; /* Keep the navbar fixed on the screen */
+    top: 0;
+    left: 0;
+    height: 100vh; /* 100% viewport height */
+    width: 200px; /* Adjust width as needed */
+    background-color: #ddd; /* Gray background */
+    padding: 20px;
+    transition: all 0.3s ease; /* Smooth transition on hover */
 }
 
-.nav-container {
-    background-color: #333;
-    padding: 15px;
-    width: 200px;
-}
-
-nav ul {
-    list-style-type: none;
+nav #sidenav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    margin-bottom: 10px;
+nav #sidenav li {
+    margin-bottom: 10px; /* Add spacing between links */
 }
 
-nav a {
+nav #sidenav a {
+    display: block;
+    padding: 10px 15px;
     text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease;
+    color: #000;
+    transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
-nav a:hover {
-    color: #55a0ff;
+nav #sidenav a:hover {
+    background-color: #eee; /* Lighten background on hover */
 }
 
-.content-container {
-    padding: 15px;
+/* Content area styles (adjust margins as needed) */
+#main-content {
+    margin-left: 200px; /* Account for sidebar width */
+    padding: 20px;
+    min-height: 100vh; /* Ensure content fills the viewport */
+}
+
+/* Styles for individual pages (if needed) can be added within each specific HTML file */
+
+/* For responsive design, consider using media queries to adjust styles for different screen sizes */
+@media (max-width: 768px) {
+    /* Adjust layout or hide elements for smaller screens */
 }
