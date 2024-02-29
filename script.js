@@ -40,7 +40,7 @@ function sortTable(col) {
             x = rows[i].getElementsByTagName("td")[col];
             y = rows[i + 1].getElementsByTagName("td")[col];
 
-            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            if (parseInt(x.innerText, 10) > parseInt(y.innerText, 10)) {
                 shouldSwitch = true;
                 break;
             }
@@ -54,55 +54,3 @@ function sortTable(col) {
 }
 
 
-
-function updateStatus(issueNumber, newStatus) {
-    const statusCell = document.getElementById(`status-${issueNumber}`);
-    if (statusCell) {
-      statusCell.textContent = newStatus;
-    } else {
-      console.error(`Status cell for issue ${issueNumber} not found.`);
-    }
-  }
-
-  function createDropdown(issueNumber) {
-    const dropdown = document.createElement('select');
-    dropdown.setAttribute('onchange', `updateStatus('${issueNumber}', this.value)`);
-
-    const options = ['Fixed', 'Pending', 'Ignore']; // Add more options if needed
-
-    options.forEach(optionText => {
-      const option = document.createElement('option');
-      option.value = optionText;
-      option.text = optionText;
-      dropdown.appendChild(option);
-    });
-
-    return dropdown;
-  }
-
-  function addDropdownsToTable() {
-    const table = document.getElementById('issueTable');
-    const rows = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < rows.length; i++) {
-      const issueNumber = rows[i].getElementsByTagName('td')[0].textContent;
-      const dropdownCell = rows[i].insertCell(3); // Insert in the 4th column (0-based index)
-      dropdownCell.appendChild(createDropdown(issueNumber));
-    }
-  }
-
-  function updateValuesInSourceCode() {
-    const table = document.getElementById('issueTable');
-    const rows = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < rows.length; i++) {
-      const issueNumber = rows[i].getElementsByTagName('td')[0].textContent;
-      const dropdown = rows[i].getElementsByTagName('select')[0];
-      const updatedValue = dropdown ? dropdown.value : '';
-
-      // Update the source code or perform any other action with the updated value
-      console.log(`Update source code for issue ${issueNumber} with value: ${updatedValue}`);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', addDropdownsToTable);
