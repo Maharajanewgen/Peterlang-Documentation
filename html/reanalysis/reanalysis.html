@@ -7,7 +7,7 @@
     <title>Red error analysis outcome.</title>
 </head>
 <body>
-    <div class="content" id="redanalysis">
+    <div class="content" id="sidebar-container">
         <h1>Issue Details</h1>
         
         <p class="right-align">Fixed</p>
@@ -28,6 +28,10 @@
         <p><a href="re1.html" target="_blank"><b>Issue 1: </b></a>Validation of the PDF is occurring even when a duplicate reference ID 
             is provided. - Date to be provided</p>
     </div>	
-    
+    <script src="../../script.js"></script>
+    <script>
+        // Load sidebar dynamically
+        document.getElementById('sidebar-container').innerHTML = getSidebar();
+    </script>
     </body>
 </html>

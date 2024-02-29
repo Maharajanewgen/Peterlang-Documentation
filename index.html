@@ -7,19 +7,16 @@
     <title>Your Project Title</title>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="nav-item" onclick="navigateToReanalysis()">
-            <span>&#9654;</span> Reanalysis
-        </div>
-        <div class="nav-item" onclick="navigateToContact()">
-            <span>&#9654;</span> Contact
-        </div>
-    </div>
+    <div id="sidebar-container"></div>
     <div class="content">
         <h1>Welcome to Your Project</h1>
         <!-- Your main content goes here -->
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Load sidebar dynamically
+        document.getElementById('sidebar-container').innerHTML = getSidebar();
+    </script>
 </body>
 </html>
