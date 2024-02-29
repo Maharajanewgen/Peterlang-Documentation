@@ -52,6 +52,9 @@ function sortTable(col) {
         }
     }
 }
+
+
+
 function updateStatus(issueNumber, newStatus) {
     const statusCell = document.getElementById(`status-${issueNumber}`);
     if (statusCell) {
