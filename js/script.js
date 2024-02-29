@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
           document.querySelector('.sidebar').classList.toggle('active');
           document.querySelector('.content').classList.toggle('active');
         });
+  
+        // Close sidebar when clicking on a sidebar link
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('active');
+            document.querySelector('.content').classList.remove('active');
+          });
+        });
       });
   });
   
