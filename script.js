@@ -1,13 +1,29 @@
-var openedTabs = {}; // Keep track of opened tabs
-
 function showContent(contentId) {
-    // Check if the content is already opened
-    if (!openedTabs[contentId]) {
-        // Open content in a new tab with target="_blank"
-        window.open(window.location.href.split('#')[0] + '#' + contentId, '_blank');
-        openedTabs[contentId] = true; // Mark the content as opened
+    const contents = document.querySelectorAll('.content');
+
+    contents.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    const selectedContent = document.getElementById(contentId);
+    if (selectedContent) {
+        selectedContent.classList.add('active');
+        // Save the selected content ID to local storage
+        localStorage.setItem('selectedContent', contentId);
+    } else {
+        console.error("Content with ID " + contentId + " not found.");
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const selectedContentId = localStorage.getItem('selectedContent');
+    if (!selectedContentId) {
+        console.error("No selected content ID found in local storage.");
+    } else {
+        showContent(selectedContentId);
+    }
+});
+
 
 function sortTable(col) {
     var table, rows, switching, i, x, y, shouldSwitch;
