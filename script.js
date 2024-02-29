@@ -4,7 +4,7 @@ function showContent(contentId) {
     // Check if the content is already opened
     if (!openedTabs[contentId]) {
         // Open content in a new tab with target="_blank"
-        window.open(window.location.href + '#' + contentId, '_blank');
+        window.open(window.location.href.split('#')[0] + '#' + contentId, '_blank');
         openedTabs[contentId] = true; // Mark the content as opened
     }
 }
@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showContent(contentIdFromUrl);
     }
 });
+
 function sortTable(col) {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("issueTable");
