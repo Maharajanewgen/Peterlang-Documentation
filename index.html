@@ -1,15 +1,24 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Your Project Title</title>
 </head>
 <body>
-    <nav class="side-nav">
-        <a href="#" onclick="showContent('reanalysis', 'reanalysis')">Red Error Handling</a>
-    </nav>
-
-    <div id="content-container"></div>
+    <div class="sidebar">
+        <div class="nav-item" onclick="navigateToReanalysis()">
+            <span>&#9654;</span> Reanalysis
+        </div>
+        <div class="nav-item" onclick="navigateToContact()">
+            <span>&#9654;</span> Contact
+        </div>
+    </div>
+    <div class="content">
+        <h1>Welcome to Your Project</h1>
+        <!-- Your main content goes here -->
+    </div>
 
     <script src="script.js"></script>
 </body>
