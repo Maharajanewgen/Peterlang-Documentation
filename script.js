@@ -3,12 +3,16 @@
 function showContent(contentId, className) {
     var content = document.getElementById(contentId);
 
-    if (content.style.display === 'none' || content.style.display === '') {
-        // If content is hidden, load it dynamically
-        fetchContent(contentId, className);
-        content.style.display = 'block';
+    if (content) {
+        if (content.style.display === 'none' || content.style.display === '') {
+            // If content is hidden, load it dynamically
+            fetchContent(contentId, className);
+            content.style.display = 'block';
+        } else {
+            content.style.display = 'none';
+        }
     } else {
-        content.style.display = 'none';
+        console.error('Element with id ' + contentId + ' not found.');
     }
 }
 
