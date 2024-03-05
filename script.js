@@ -23,39 +23,47 @@ document.addEventListener('DOMContentLoaded', function () {
         showContent(selectedContentId);
     }
 });
+let currentColumn = 0; // Default column for initial sorting
+let isAscending = true; // Default sorting order
 
-let sortDirection = 1; // 1 for ascending, -1 for descending
-
-function sortTable(col) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("issueTable");
-    switching = true;
+function sortTable(column) {
+    const table = document.getElementById("issueTable");
+    const rows = table.rows;
+    const switching = true;
 
     while (switching) {
-        switching = false;
-        rows = table.rows;
+        let shouldSwitch = false;
 
-        for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
+        for (let i = 1; i < rows.length - 1; i++) {
+            let x = rows[i].getElementsByTagName("TD")[column];
+            let y = rows[i + 1].getElementsByTagName("TD")[column];
 
-            x = rows[i].getElementsByTagName("td")[col];
-            y = rows[i + 1].getElementsByTagName("td")[col];
-
-            const xValue = parseFloat(x.innerText) || 0;
-            const yValue = parseFloat(y.innerText) || 0;
-
-            if (sortDirection * (xValue - yValue) > 0) {
-                shouldSwitch = true;
-                break;
+            if (isAscending) {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
             }
         }
 
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
+        } else {
+            switching = false;
+
+            // If the current column is the same as the clicked column, reverse the sorting order
+            if (currentColumn === column) {
+                isAscending = !isAscending;
+            } else {
+                isAscending = true; // Reset sorting order for a new column
+                currentColumn = column; // Set the current column to the clicked column
+            }
         }
     }
-
-    // Toggle sort direction
-    sortDirection *= -1;
 }
