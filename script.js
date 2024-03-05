@@ -23,53 +23,55 @@ document.addEventListener('DOMContentLoaded', function () {
         showContent(selectedContentId);
     }
 });
+
+
 let currentColumn = 0; // Default column for initial sorting
 let isAscending = true; // Default sorting order
 
 function sortTable(column) {
     const table = document.getElementById("issueTable");
-    const rows = table.rows;
+    const rows = Array.from(table.rows).slice(1); // Exclude the header row
     const switching = true;
 
     while (switching) {
         let shouldSwitch = false;
 
-        for (let i = 1; i < rows.length - 1; i++) {
+        for (let i = 0; i < rows.length - 1; i++) {
             let x, y;
 
             if (column === 0) {
                 // For the first column (Issue No), compare as numbers
-                x = parseInt(rows[i].getElementsByTagName("TD")[column].innerText);
-                y = parseInt(rows[i + 1].getElementsByTagName("TD")[column].innerText);
+                x = parseInt(rows[i].cells[column].innerText);
+                y = parseInt(rows[i + 1].cells[column].innerText);
             } else {
                 // For other columns, compare as strings
-                x = rows[i].getElementsByTagName("TD")[column].innerText.toLowerCase();
-                y = rows[i + 1].getElementsByTagName("TD")[column].innerText.toLowerCase();
+                x = rows[i].cells[column].innerText.toLowerCase();
+                y = rows[i + 1].cells[column].innerText.toLowerCase();
             }
 
-            if (isAscending) {
-                shouldSwitch = x > y;
-            } else {
-                shouldSwitch = x < y;
-            }
-
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
+            if (isAscending ? x > y : x < y) {
+                shouldSwitch = true;
                 break; // Break the loop after a switch
             }
         }
 
-        if (!shouldSwitch) {
-            switching = false;
+        if (shouldSwitch) {
+            rows.forEach((row, index) => {
+                const nextRow = rows[index + 1];
+                if (nextRow && (isAscending ? row.cells[column].innerText > nextRow.cells[column].innerText : row.cells[column].innerText < nextRow.cells[column].innerText)) {
+                    table.tBodies[0].insertBefore(nextRow, row);
+                }
+            });
+        }
 
-            // If the current column is the same as the clicked column, reverse the sorting order
-            if (currentColumn === column) {
-                isAscending = !isAscending;
-            } else {
-                isAscending = true; // Reset sorting order for a new column
-                currentColumn = column; // Set the current column to the clicked column
-            }
+        switching = shouldSwitch;
+        
+        // If the current column is the same as the clicked column, reverse the sorting order
+        if (currentColumn === column) {
+            isAscending = !isAscending;
+        } else {
+            isAscending = true; // Reset sorting order for a new column
+            currentColumn = column; // Set the current column to the clicked column
         }
     }
 }
