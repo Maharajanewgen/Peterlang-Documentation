@@ -40,7 +40,8 @@ function sortTable(col) {
             x = rows[i].getElementsByTagName("td")[col];
             y = rows[i + 1].getElementsByTagName("td")[col];
 
-            if (parseInt(x.innerText, 10) > parseInt(y.innerText, 10)) {
+            // Treat values as strings and compare
+            if (x.innerText.localeCompare(y.innerText, undefined, { numeric: true }) > 0) {
                 shouldSwitch = true;
                 break;
             }
