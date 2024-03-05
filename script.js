@@ -35,26 +35,32 @@ function sortTable(column) {
         let shouldSwitch = false;
 
         for (let i = 1; i < rows.length - 1; i++) {
-            let x = rows[i].getElementsByTagName("TD")[column];
-            let y = rows[i + 1].getElementsByTagName("TD")[column];
+            let x, y;
+
+            if (column === 0) {
+                // For the first column (Issue No), compare as numbers
+                x = parseInt(rows[i].getElementsByTagName("TD")[column].innerText);
+                y = parseInt(rows[i + 1].getElementsByTagName("TD")[column].innerText);
+            } else {
+                // For other columns, compare as strings
+                x = rows[i].getElementsByTagName("TD")[column].innerText.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[column].innerText.toLowerCase();
+            }
 
             if (isAscending) {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
-                }
+                shouldSwitch = x > y;
             } else {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
-                }
+                shouldSwitch = x < y;
+            }
+
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                break; // Break the loop after a switch
             }
         }
 
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-        } else {
+        if (!shouldSwitch) {
             switching = false;
 
             // If the current column is the same as the clicked column, reverse the sorting order
