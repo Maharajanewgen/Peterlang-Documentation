@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+let sortDirection = 1; // 1 for ascending, -1 for descending
 
 function sortTable(col) {
     var table, rows, switching, i, x, y, shouldSwitch;
@@ -40,8 +41,10 @@ function sortTable(col) {
             x = rows[i].getElementsByTagName("td")[col];
             y = rows[i + 1].getElementsByTagName("td")[col];
 
-            // Treat values as strings and compare
-            if (x.innerText.localeCompare(y.innerText, undefined, { numeric: true }) > 0) {
+            const xValue = parseFloat(x.innerText) || 0;
+            const yValue = parseFloat(y.innerText) || 0;
+
+            if (sortDirection * (xValue - yValue) > 0) {
                 shouldSwitch = true;
                 break;
             }
@@ -52,6 +55,7 @@ function sortTable(col) {
             switching = true;
         }
     }
+
+    // Toggle sort direction
+    sortDirection *= -1;
 }
-
-
