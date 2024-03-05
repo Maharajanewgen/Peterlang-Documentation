@@ -24,54 +24,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+let currentSortColumn = -1;
+    let isAscending = true;
 
-let currentColumn = 0; // Default column for initial sorting
-let isAscending = true; // Default sorting order
+    function sortTable(columnIndex) {
+        const table = document.getElementById('issueTable');
+        const tbody = table.getElementsByTagName('tbody')[0];
+        const rows = Array.from(tbody.getElementsByTagName('tr'));
 
-function sortTable(column) {
-    const table = document.getElementById("issueTable");
-    const rows = Array.from(table.rows).slice(1); // Exclude the header row
-    const switching = true;
+        rows.sort((a, b) => {
+            const aValue = a.getElementsByTagName('td')[columnIndex].innerText;
+            const bValue = b.getElementsByTagName('td')[columnIndex].innerText;
 
-    while (switching) {
-        let shouldSwitch = false;
-
-        for (let i = 0; i < rows.length - 1; i++) {
-            let x, y;
-
-            if (column === 0) {
-                // For the first column (Issue No), compare as numbers
-                x = parseInt(rows[i].cells[column].innerText);
-                y = parseInt(rows[i + 1].cells[column].innerText);
+            if (columnIndex === 0) {
+                // Numeric sorting for the first column
+                return isAscending ? aValue - bValue : bValue - aValue;
             } else {
-                // For other columns, compare as strings
-                x = rows[i].cells[column].innerText.toLowerCase();
-                y = rows[i + 1].cells[column].innerText.toLowerCase();
+                // Alphabetic sorting for other columns
+                return isAscending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
             }
+        });
 
-            if (isAscending ? x > y : x < y) {
-                shouldSwitch = true;
-                break; // Break the loop after a switch
-            }
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
         }
 
-        if (shouldSwitch) {
-            rows.forEach((row, index) => {
-                const nextRow = rows[index + 1];
-                if (nextRow && (isAscending ? row.cells[column].innerText > nextRow.cells[column].innerText : row.cells[column].innerText < nextRow.cells[column].innerText)) {
-                    table.tBodies[0].insertBefore(nextRow, row);
-                }
-            });
-        }
+        rows.forEach(row => {
+            tbody.appendChild(row);
+        });
 
-        switching = shouldSwitch;
-        
-        // If the current column is the same as the clicked column, reverse the sorting order
-        if (currentColumn === column) {
+        // Toggle sort order
+        if (columnIndex === currentSortColumn) {
             isAscending = !isAscending;
         } else {
-            isAscending = true; // Reset sorting order for a new column
-            currentColumn = column; // Set the current column to the clicked column
+            isAscending = true;
         }
+
+        currentSortColumn = columnIndex;
     }
-}
