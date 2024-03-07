@@ -62,3 +62,7 @@ let currentSortColumn = -1;
 
         currentSortColumn = columnIndex;
     }
+    function openInSameTab(event) {
+        event.preventDefault(); // Prevent the default behavior of opening in a new tab
+        window.location.href = event.target.href; // Manually navigate to the link's URL
+    }
